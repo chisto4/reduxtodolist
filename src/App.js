@@ -18,6 +18,7 @@ class App extends React.Component {
     this.setAllArrayElement = this.setAllArrayElement.bind(this);
     this.clearAll = this.clearAll.bind(this);
 
+    console.log('Hello world');
 
     this.state = {
       todosArr: [
