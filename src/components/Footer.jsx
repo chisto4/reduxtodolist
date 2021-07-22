@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from "react-redux";
-import {clearAll, countArray, setAllArrayElement} from "../action/Actions"
+import {clearAll, setAllArrayElement} from "../action/Actions"
 
 
  //Import icon
@@ -8,10 +8,7 @@ import {clearAll, countArray, setAllArrayElement} from "../action/Actions"
  import deleteAllbutton  from '../icon/delete.png';
 
 class Footer extends React.Component {
-  constructor(props) {super(props);
-    
-  }
-
+  constructor(props) {super(props);}
 render() {
   return (
     <footer>
@@ -19,7 +16,7 @@ render() {
          <img src={chekAllbutton} className="icon" alt="deleteAll"/>
         </button>
       <div className="totalCounter">
-        Task total: {this.props.countArray}
+        Task total: {this.props.count}
       </div>
       <button onClick={this.props.clearAll} className="deleteAllbutton">
         <img src={deleteAllbutton} className="icon" alt="deleteAll"/>
@@ -29,11 +26,14 @@ render() {
 }
 }
 
+function mapStateToProps(state) {
+  const { count } = state.Reductor;
+  return { count };
+}
 
 const mapDispatchToProps = {
   clearAll,
-  countArray,
   setAllArrayElement,
 };
 
-export default connect(null, mapDispatchToProps)(Footer);
+export default connect(mapStateToProps, mapDispatchToProps)(Footer);

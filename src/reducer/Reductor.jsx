@@ -13,6 +13,7 @@ const initialState = {
     {completed: false, text: 'Test Hello', id: 1}
   ],
   filterValue: "all",
+  count: 1,
 };
 
 const Reductor = (state = initialState, action) => {
@@ -25,6 +26,7 @@ const Reductor = (state = initialState, action) => {
       return {
         ...state,
           todosArr: filArr,
+          count: filArr.length,
       };
          
     case CREATE_TODO:
@@ -36,14 +38,14 @@ const Reductor = (state = initialState, action) => {
             text: inputText, completed: false, id: Math.random()*10
           }
         ),
+        count: state.count + 1,
       };  
 
     case COUNT_ARRAY:
       let countArray = state.todosArr.length;
-      console.log("zalupa count",countArray);
       return {
         ...state,
-        countArray,
+        count: countArray,
       };
 
 
@@ -53,7 +55,8 @@ const Reductor = (state = initialState, action) => {
         myTodos = myTodos.filter((el) => el.id !== removeId);
         return {
           ...state,
-          todosArr: myTodos
+          todosArr: myTodos,
+          count: myTodos.length,
         };
        
     case COMPLETE_HENDLER:
