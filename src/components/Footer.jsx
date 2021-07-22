@@ -1,17 +1,16 @@
 import React from 'react';
+import { connect } from "react-redux";
+import {clearAll, countArray, setAllArrayElement} from "../action/Actions"
+
 
  //Import icon
  import chekAllbutton  from '../icon/chek.png';
  import deleteAllbutton  from '../icon/delete.png';
 
-
 class Footer extends React.Component {
   constructor(props) {super(props);
     
   }
-
-
-
 
 render() {
   return (
@@ -31,4 +30,10 @@ render() {
 }
 
 
-export default Footer;
+const mapDispatchToProps = {
+  clearAll,
+  countArray,
+  setAllArrayElement,
+};
+
+export default connect(null, mapDispatchToProps)(Footer);

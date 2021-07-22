@@ -1,4 +1,7 @@
 import React from 'react';
+import { connect } from "react-redux";
+import {deleteHandler, completeHandler} from "../action/Actions"
+
 
 class Todo extends React.Component {
   constructor(props) {
@@ -15,7 +18,6 @@ class Todo extends React.Component {
     this.props.completeHandler(this.props.todo.id);
   }
   render () {
-    const {text} = this.props;
     const {todo} = this.props;
   return(
       <div className="todo">
@@ -30,4 +32,9 @@ class Todo extends React.Component {
   );  }
 }
 
-export default Todo;
+const mapDispatchToProps = {
+  deleteHandler,
+  completeHandler,
+};
+
+export default connect(null, mapDispatchToProps)(Todo);

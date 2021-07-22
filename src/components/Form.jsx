@@ -1,4 +1,7 @@
 import React from 'react';
+import { connect } from "react-redux";
+import {creatTodo, setFilteredTodos} from "../action/Actions"
+
 
 class Form extends React.Component {
   constructor(props) {
@@ -24,13 +27,13 @@ newTodo(event) {
 }
 sumbitToDoHandler (event) {
   // event.componentDidMount();
-  this.props.onCreateItem(this.state.inputText)
+  this.props.creatTodo(this.state.inputText)
   this.setState({inputText: ""});
   event.preventDefault();
 };
 statusHandler (event) {
   console.log('test', event);
-  this.props.filterArray(event.target.value);
+  this.props.setFilteredTodos(event.target.value);
   console.log('mama:"', event.target.value)
 
   // this.setStatus(event.target.value);
@@ -59,4 +62,9 @@ statusHandler (event) {
     }
 }
 
-export default Form;
+const mapDispatchToProps = {
+  creatTodo,
+  setFilteredTodos
+};
+
+export default connect(null, mapDispatchToProps)(Form);

@@ -1,5 +1,5 @@
 import { combineReducers } from "redux";
-import Todo from "../components/Todo";
+import Reductor from "../reducer/Reductor";
 
-const rootReducer = combineReducers({ Todo });
+const rootReducer = combineReducers({ Reductor });
 export default rootReducer;

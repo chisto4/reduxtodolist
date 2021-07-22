@@ -1,4 +1,7 @@
 import React from 'react';
+import { connect } from "react-redux";
+import {deleteHandler, completeHandler} from "../action/Actions"
+
 
 import Todo from "./Todo";
 
@@ -34,4 +37,15 @@ class TodoList extends React.Component {
     }
 }
 
-export default TodoList;
+function mapStateToProps(state) {
+  const { todosArr } = state.Reductor;
+  const { filterValue } = state.Reductor;
+  return { todosArr, filterValue };
+}
+
+const mapDispatchToProps = {
+  deleteHandler,
+  completeHandler,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(TodoList);
